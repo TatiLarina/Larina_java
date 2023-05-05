@@ -5,19 +5,28 @@ public class Numbers {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
-        System.out.print("Введите длину числового массива: ");
-        int size = input.nextInt();
-        int[] array = new int[size];
-        System.out.print("Введите элементы числового массива: ");
-        for (int i = 0; i < size; i++) {
-            array[i] = input.nextInt();
-        }
-        System.out.print("Элементы массива, кратные 3: ");
-        for (int i = 0; i < size; i++) {
-            if (array[i] % 3 == 0) {
-                System.out.print(array[i] + " ");
+
+        try {
+            System.out.print("Введите числовой массив через пробелы: ");
+            String[] array = input.nextLine().split(" ");
+            double[] arrayNumbers = new double[array.length];
+
+            for (int i = 0; i < array.length; i++) {
+                arrayNumbers[i] = Double.parseDouble(array[i]);
+            }
+
+            System.out.print("Элементы массива, кратные 3: ");
+            for (Double number : arrayNumbers) {
+                if (number % 3 == 0) {
+                    String s = String.format("%.0f", number);
+                    System.out.print(s + " ");
+                }
             }
         }
-        System.out.println();
+        catch (NumberFormatException e) {
+            System.out.println("Пожалуйста, введите числовой массив через пробелы");
+        }
+
+
     }
 }

@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Seven {
@@ -6,11 +7,16 @@ public class Seven {
 
         Scanner input = new Scanner(System.in);
         System.out.print("Введите число: ");
-        int num = input.nextInt();
-
-        if (num == 7) {
-            System.out.println("Привет");
+        try {
+            double num = input.nextDouble();
+            if (num == 7) {
+                System.out.println("Привет");
+            }
         }
+        catch (InputMismatchException e) {
+            System.out.println("Пожалуйста, введите число");
+        }
+
 
     }
 }
